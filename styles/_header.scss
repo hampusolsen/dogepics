@@ -1,0 +1,51 @@
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        margin-top: 25px;
+        font-family: 'Calistoga';
+        font-weight: 100;
+        font-size: 6rem;
+
+        i {
+            margin-right: 10px;
+            transform: rotateZ(-35deg);
+        }
+
+        span {
+            background: url(https://2o7fsh4anuayrnrhe3us6v71-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/28th-Annual-Shiba-Inu-Party.jpg);
+            background-position-y: -50px;
+            background-size: 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    h2 {
+        font-family: 'Baskervville';
+        font-weight: 100;
+        font-size: .8rem;
+    }
+}
+
+.animatedLetter {
+    background: linear-gradient(45deg, magenta, pink, purple, skyblue, royalblue, green, yellow);
+    background-size: 2000%;
+    animation: fadeColors 20s linear infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes fadeColors {
+    0% {
+        background-position-x: 0%;
+    } 50% {
+        background-position-x: 100%;
+    } 100% {
+        background-position-x: 0%;
+    }
+}

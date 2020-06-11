@@ -1,0 +1,59 @@
+(function () {
+    'use strict';
+
+    function getAllBreedsObject() {
+        return axios.get('https://dog.ceo/api/breeds/list/all')
+            .then(response => {
+                return response.data.message;
+            });
+    }
+    function getBreedImages(breed) {
+        return axios.get(`https://dog.ceo/api/breed/${breed}/images/random/3`)
+            .then(response => {
+                return response.data.message;
+            });
+    }
+    function getRandoms() {
+        return axios.get('https://dog.ceo/api/breeds/image/random/3')
+            .then(response => {
+                return response.data.message;
+            });
+    }
+    var data = {
+        getAllBreedsObject: getAllBreedsObject,
+        getBreedImages: getBreedImages,
+        getRandoms: getRandoms,
+    };
+
+    let dogsObject;
+
+    const breedSelector = document.querySelector('#breeds');
+    console.log(breedSelector);
+    breedSelector.addEventListener('change', getBreed);
+
+    window.addEventListener('load', getBreed);
+
+    const refreshButton = document.querySelector('footer > i');
+    refreshButton.addEventListener('click', getBreed);
+
+    function capitalize(string) {
+        return string[0].toUpperCase() + string.slice(1);
+    }
+
+    data.getAllBreedsObject() // gets object with all breed & subbreed names
+        .then(allBreeds => {
+            dogsObject = allBreeds;
+
+            for (let breed in dogsObject) {
+                const breedOption = document.createElement('option');
+                breedOption.value = breed;
+                breedOption.textContent = capitalize(breed);
+                breedSelector.appendChild(breedOption);
+            }    });
+
+    function getBreed() {
+        for (let dog in dogsObject) {
+            console.log(dog);
+        }}
+
+}());
